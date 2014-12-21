@@ -1,16 +1,15 @@
-﻿using System;
+﻿using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Timmy;
 using Timmy.Controllers;
 
 namespace Timmy.Tests.Controllers {
-    [TestClass]
     public class HomeControllerTest {
-        [TestMethod]
+        [Test]
         public void Index() {
             // Arrange
             HomeController controller = new HomeController();
@@ -22,7 +21,7 @@ namespace Timmy.Tests.Controllers {
             Assert.IsNotNull(result);
         }
 
-        [TestMethod]
+        [Test]
         public void About() {
             // Arrange
             HomeController controller = new HomeController();
@@ -34,7 +33,7 @@ namespace Timmy.Tests.Controllers {
             Assert.AreEqual("Your application description page.", result.ViewBag.Message);
         }
 
-        [TestMethod]
+        [Test]
         public void Contact() {
             // Arrange
             HomeController controller = new HomeController();
