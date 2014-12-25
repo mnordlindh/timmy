@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Timmy.Domain {
     public class TimeReporter {
-        ITimeReportStorage _storage;
+        IPersistor<TimeReport> _persistor;
 
-        public TimeReporter(ITimeReportStorage storage) {
-            _storage = storage;
+        public TimeReporter(IPersistor<TimeReport> persistor) {
+            _persistor = persistor;
         }
 
         public void ReportTime(User user, DateTime reportedDate, TimeSpan timespan) {
-            _storage.Add(new TimeReport(user, reportedDate, timespan));
+            _persistor.Add(new TimeReport(user, reportedDate, timespan));
         }
     }
 }

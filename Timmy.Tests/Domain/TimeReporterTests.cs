@@ -11,8 +11,7 @@ namespace Timmy.Tests.Domain {
     class TimeReporterTests {
         [Test]
         public void ReportTime_WithValidArguments_ShouldStoreTimeReport() {
-            var storageMock = new Mock<ITimeReportStorage>();
-            storageMock.Setup(m => m.Add(It.IsAny<TimeReport>())).Verifiable();
+            var storageMock = new Mock<IPersistor<TimeReport>>();
 
             new TimeReporter(storageMock.Object)
                 .ReportTime(new User("123"), DateTime.Now, TimeSpan.FromHours(8));

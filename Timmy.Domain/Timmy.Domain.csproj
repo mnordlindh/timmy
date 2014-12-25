@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IQuery.cs" />
+    <Compile Include="ListPersistor.cs" />
     <Compile Include="TimeReport.cs" />
     <Compile Include="TimeReporter.cs" />
     <Compile Include="TimeReportRetriever.cs" />

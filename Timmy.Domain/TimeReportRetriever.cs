@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Timmy.Domain {
     public class TimeReportRetriever {
-        private ITimeReportStorage _storage;
+        private IQueryable<TimeReport> _retriever;
 
-        public TimeReportRetriever(ITimeReportStorage storage) {
-            _storage = storage;
+        public TimeReportRetriever(IQueryable<TimeReport> retriever) {
+            _retriever = retriever;
         }
 
         public IEnumerable<TimeReport> GetTimeReports(IQuery<TimeReport> query) {
-            return _storage.All().Where(tr => query.Match(tr)).ToList();
+            return _retriever.Where(query.Match).ToList();
         }
     }
 }
