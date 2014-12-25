@@ -39,8 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IQuery.cs" />
     <Compile Include="TimeReport.cs" />
     <Compile Include="TimeReporter.cs" />
+    <Compile Include="TimeReportRetriever.cs" />
+    <Compile Include="TimeReportsForUserQuery.cs" />
     <Compile Include="TimeReportStorage.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -8,7 +8,7 @@ namespace Timmy.Domain {
     public interface ITimeReportStorage {
         void Add(TimeReport timeReport);
 
-        IQueryable<TimeReport> All();
+        IEnumerable<TimeReport> All();
     }
 
     public class TimeReportStorage : ITimeReportStorage {
@@ -18,8 +18,8 @@ namespace Timmy.Domain {
             _reports.Add(timeReport);    
         }
 
-        public IQueryable<TimeReport> All() {
-            return _reports.AsQueryable();
+        public IEnumerable<TimeReport> All() {
+            return _reports.ToList();
         }
     }
 }

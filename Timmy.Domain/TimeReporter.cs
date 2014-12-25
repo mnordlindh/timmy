@@ -15,9 +15,5 @@ namespace Timmy.Domain {
         public void ReportTime(User user, DateTime reportedDate, TimeSpan timespan) {
             _storage.Add(new TimeReport(user, reportedDate, timespan));
         }
-
-        public TimeReport GetTimeReport(User _user, DateTime _reportedTime) {
-            return _storage.All().FirstOrDefault(tr => tr.User.Id == _user.Id && tr.Time.Date == _reportedTime.Date);
-        }
     }
 }
