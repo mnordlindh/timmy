@@ -5,7 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Timmy.Domain {
-    public class TimeReportRetriever {
+    public interface ITimeReportRetriever {
+        IEnumerable<TimeReport> GetTimeReports(IQuery<TimeReport> query);
+    }
+
+    public class TimeReportRetriever : ITimeReportRetriever {
         private IQueryable<TimeReport> _retriever;
 
         public TimeReportRetriever(IQueryable<TimeReport> retriever) {
@@ -13,6 +17,8 @@ namespace Timmy.Domain {
         }
 
         public IEnumerable<TimeReport> GetTimeReports(IQuery<TimeReport> query) {
+            if (query == null) { throw new ArgumentNullException("query"); }
+
             return _retriever.Where(query.Match).ToList();
         }
     }

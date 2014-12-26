@@ -13,6 +13,8 @@ namespace Timmy.Domain {
         }
 
         public void ReportTime(User user, DateTime reportedDate, TimeSpan timespan) {
+            if (user == null) { throw new ArgumentNullException("user"); }
+
             _persistor.Add(new TimeReport(user, reportedDate, timespan));
         }
     }

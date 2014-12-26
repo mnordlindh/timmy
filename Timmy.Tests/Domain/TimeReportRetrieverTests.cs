@@ -23,5 +23,13 @@ namespace Timmy.Tests.Domain {
             query.Verify(m => m.Match(tr1), Times.Once);
             query.Verify(m => m.Match(tr2), Times.Once);
         }
+
+        [Test]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void GetTimeReports_CalledWithNull_ShouldThrow() {
+            var storageMock = Mock.Of<IQueryable<TimeReport>>(m => m.GetEnumerator() == new List<TimeReport>().AsQueryable().GetEnumerator());
+
+            var reports = new TimeReportRetriever(storageMock).GetTimeReports(null);
+        }
     }
 }

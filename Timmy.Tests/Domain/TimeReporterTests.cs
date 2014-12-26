@@ -18,5 +18,16 @@ namespace Timmy.Tests.Domain {
             
             storageMock.Verify(m => m.Add(It.IsAny<TimeReport>()), Times.Once);
         }
+
+        [Test]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ReportTime_WithNullUserArgument_ShouldThrow() {
+            var storageMock = new Mock<IPersistor<TimeReport>>();
+
+            new TimeReporter(storageMock.Object)
+                .ReportTime(null, DateTime.Now, TimeSpan.FromHours(8));
+        }
+
+        // tests for rest of arguments, throws..
     }
 }

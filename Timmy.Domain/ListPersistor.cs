@@ -18,6 +18,9 @@ namespace Timmy.Domain {
         }
 
         public void Add(TimeReport timeReport) {
+            if(timeReport == null){
+                throw new ArgumentNullException("timeReport");
+            }
             _collection.Add(timeReport);
         }
     }
